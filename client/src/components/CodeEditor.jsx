@@ -3,13 +3,19 @@ import { editerOptios } from "../services/themeStyles";
 
 export default function CodeEditor({ value, onChange, language }) {
   return (
-    <Editor
-      height="400px"
-      language={language}
-      value={value}
-      theme="vs-dark"
-      onChange={(val) => onChange(val ?? "")}
-      options={editerOptios}
-    />
+    <div>
+      <div style={{ marginBottom: 6, fontWeight: 600 }}>
+        Paste Legacy JavaScript Code Here
+      </div>
+
+      <Editor
+        height="380px"
+        language={language}
+        value={value}
+        theme="vs-dark"
+        onChange={(val) => onChange(val ?? "")}
+        options={editerOptios}
+      />
+    </div>
   );
 }

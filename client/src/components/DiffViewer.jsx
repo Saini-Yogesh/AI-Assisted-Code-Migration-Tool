@@ -5,28 +5,10 @@ export default function DiffViewer({ oldCode, newCode }) {
   if (!newCode) return null;
 
   return (
-    <div
-      style={{
-        marginTop: 20,
-        border: "1px solid #1f2937",
-        borderRadius: 8,
-        overflow: "hidden",
-        background: "#020617",
-      }}
-    >
-      {/* Header */}
-      <div
-        style={{
-          padding: "10px 14px",
-          background: "#020617",
-          borderBottom: "1px solid #1f2937",
-          color: "#e5e7eb",
-          fontWeight: 600,
-          letterSpacing: "0.3px",
-          textAlign: "center",
-        }}
-      >
-        Diff View
+    <div className="diff-viewer">
+      <div className="live-header">
+        <span className="live-dot"></span>
+        Live Diff View
       </div>
 
       <ReactDiffViewer

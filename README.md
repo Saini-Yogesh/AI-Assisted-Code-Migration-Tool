@@ -2,31 +2,35 @@
 
 An AI-powered developer tool that converts **legacy JavaScript code** into **modern ES6+ JavaScript or TypeScript** with strict typing, side-by-side diff comparison, export support, and migration history.
 
+![Live Demo](./live-demo.png)
+
 This project demonstrates **full-stack system design**, **AI integration**, and **developer-centric UX**.
 
 ---
 
 ## ✨ Features
 
-* 🧠 **AI-powered code migration**
+- 🧠 **AI-powered code migration**
+  - Legacy JavaScript → ES6+ or TypeScript
+  - Strict typing and modern syntax
 
-  * Legacy JavaScript → ES6+ or TypeScript
-  * Strict typing and modern syntax
-* 🧑‍💻 **Monaco Editor**
+- 🧑‍💻 **Monaco Editor**
+  - VS Code–like editing experience
 
-  * VS Code–like editing experience
-* 🔍 **Side-by-side diff viewer**
+- 🔍 **Side-by-side diff viewer**
+  - Compare original vs migrated code
 
-  * Compare original vs migrated code
-* 💾 **Session history**
+- **Edit Migrated Code**
+  - Edit migrated code and see the live difference
 
-  * Stores past migrations using MongoDB
-* 📤 **Export & copy**
+- 💾 **Session history**
+  - Stores past migrations using MongoDB
 
-  * Download migrated code as `.js` or `.ts`
-* ⚠️ **Graceful error handling**
+- 📤 **Export & copy**
+  - Download migrated code as `.js` or `.ts`
 
-  * Clear UI feedback for failures
+- ⚠️ **Graceful error handling**
+  - Clear UI feedback for failures
 
 ---
 
@@ -34,17 +38,17 @@ This project demonstrates **full-stack system design**, **AI integration**, and 
 
 ### Frontend
 
-* React.js
-* Monaco Editor (`@monaco-editor/react`)
-* react-diff-viewer
-* Axios
+- React.js
+- Monaco Editor (`@monaco-editor/react`)
+- react-diff-viewer
+- Axios
 
 ### Backend
 
-* Node.js
-* Express.js
-* MongoDB (Mongoose)
-* Gemini API (Google Generative AI)
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- Gemini API (Google Generative AI)
 
 ---
 
@@ -73,14 +77,78 @@ Database (MongoDB)
 ## 📂 Project Structure
 
 ```
-ai-code-migration-tool/
+AI-CODE-MIGRATION-TOOL/
 │
-├── client/        # React frontend
+├── client/
+│   ├── .env
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── node_modules/
+│   │
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo.png
+│   │   └── manifest.json
+│   │
+│   └── src/
+│       ├── components/
+│       │   ├── CodeEditor.jsx
+│       │   ├── DiffViewer.jsx
+│       │   ├── EditableMigratedEditor.jsx
+│       │   ├── ErrorBanner.jsx
+│       │   ├── Home.jsx
+│       │   ├── MigrationOptions.jsx
+│       │   └── SessionHistory.jsx
+│       │
+│       ├── services/
+│       │   ├── api.js
+│       │   └── themeStyles.js
+│       │
+│       ├── styles/
+│       │   ├── Home.css
+│       │   └── index.css
+│       │
+│       ├── utils/
+│       │   └── exportFile.js
+│       │
+│       ├── App.js
+│       ├── App.test.js
+│       ├── index.js
+│       ├── reportWebVitals.js
+│       └── setupTests.js
 │
-├── server/        # Node + Express backend
+├── samples/
+│   ├── legacy.js
+│   └── migrated.ts
 │
-├── samples/       # Example legacy & migrated code
+├── server/
+│   ├── .env
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── node_modules/
+│   │
+│   └── src/
+│       ├── controllers/
+│       │   └── migration.controller.js
+│       │
+│       ├── models/
+│       │   └── MigrationSession.js
+│       │
+│       ├── routes/
+│       │   └── migration.routes.js
+│       │
+│       ├── services/
+│       │   ├── ai.service.js
+│       │   └── prompt.builder.js
+│       │
+│       └── index.js
 │
+├── .gitignore
+├── package.json
+├── package-lock.json
 └── README.md
 ```
 
@@ -125,7 +193,18 @@ npm run dev
 ```bash
 cd client
 npm install --legacy-peer-deps
-npm start
+```
+
+Create `.env` file:
+
+```env
+REACT_APP_BASE_URL=http://localhost:5000
+```
+
+Run frontend:
+
+```bash
+npm run dev
 ```
 
 Frontend runs on:
@@ -147,9 +226,10 @@ http://localhost:5000
 1. Paste legacy JavaScript code into the editor
 2. Select target format (ES6+ / TypeScript)
 3. Click **Migrate**
-4. Review AI-generated changes in diff viewer
-5. Download or copy migrated code
-6. Revisit previous migrations via history panel
+4. Review AI-generated changes in live diff viewer
+5. **Edit(if required)** AI-generated changes in Migrated Code Editer
+6. Download or copy migrated code
+7. Revisit previous migrations via history panel
 
 ---
 
@@ -157,11 +237,11 @@ http://localhost:5000
 
 The AI prompt is carefully designed to:
 
-* Preserve business logic
-* Avoid hallucinations
-* Enforce modern syntax
-* Generate strict, compilable TypeScript
-* Output **code only** (no explanations)
+- Preserve business logic
+- Avoid hallucinations
+- Enforce modern syntax
+- Generate strict, compilable TypeScript
+- Output **code only** (no explanations)
 
 Prompt logic is modular and reusable.
 
@@ -172,7 +252,7 @@ Prompt logic is modular and reusable.
 **Legacy JavaScript**
 
 ```js
-var sum = function(a, b) {
+var sum = function (a, b) {
   return a + b;
 };
 ```
@@ -187,26 +267,13 @@ export const sum = (a: number, b: number): number => {
 
 ---
 
-## 🎥 Demo
-
-A demo video showcasing:
-
-* Code migration
-* Diff comparison
-* Export
-* Session history
-
-📎 *(Add demo recording link here)*
-
----
-
 ## 🚀 Future Enhancements
 
-* AST-based validation
-* Multi-file migration
-* Zip export
-* Authentication
-* Prompt versioning
+- AST-based validation
+- Multi-file migration
+- Zip export
+- Authentication
+- Prompt versioning
 
 ---
 
@@ -214,6 +281,6 @@ A demo video showcasing:
 
 **Yogesh Saini**
 
-* Competitive Programmer (CF Specialist, LeetCode Knight)
-* Full-Stack & Backend-focused Developer
-* Interested in scalable systems and AI-powered developer tools
+- Competitive Programmer (Codeforces- **Specialist**, LeetCode- **Knight**)
+- Full-Stack & Backend-focused Developer
+- Interested in scalable systems and AI-powered developer tools

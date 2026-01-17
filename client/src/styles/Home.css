@@ -40,10 +40,6 @@ h1 {
   margin-top: 12px;
 }
 
-h3 {
-  text-align: center;
-}
-
 /* ===== Session History ===== */
 .history-empty {
   color: #94a3b8;
@@ -206,3 +202,70 @@ h3 {
   }
 }
 /* ===== End Action-bar===== */
+
+/* ===== Diff Viewer ===== */
+
+.diff-viewer {
+  margin-top: 20;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #020617;
+}
+
+.live-header {
+  padding: 10px 14px;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+  color: #e5e7eb;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* ===== End Diff Viewer ===== */
+
+/* ===== Migrated Editor Container ===== */
+
+.migrated-editor-container {
+  margin-top: 20px;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #020617;
+}
+
+.migrated-editor-header {
+  padding: 10px 14px;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+  color: #e5e7eb;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+/* ===== End Migrated Editor Container ===== */

@@ -1,0 +1,18 @@
+{
+  "name": "ai-code-migration-tool",
+  "version": "1.0.0",
+  "description": "An AI-powered developer tool that converts legacy JavaScript code into modern ES6 + JavaScript or TypeScript with strict typing, side-by-side diff comparison, export support, and migration history.",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

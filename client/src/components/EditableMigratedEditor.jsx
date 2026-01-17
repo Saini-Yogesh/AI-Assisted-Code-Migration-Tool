@@ -1,8 +1,8 @@
-import ReactDiffViewer, { DiffMethod } from "react-diff-viewer";
-import { darkDiffStyles } from "../services/themeStyles";
+import Editor from "@monaco-editor/react";
+import { editerOptios } from "../services/themeStyles";
 
-export default function DiffViewer({ oldCode, newCode }) {
-  if (!newCode) return null;
+export default function EditableMigratedEditor({ value, onChange, language }) {
+  if (!value) return null;
 
   return (
     <div
@@ -14,7 +14,6 @@ export default function DiffViewer({ oldCode, newCode }) {
         background: "#020617",
       }}
     >
-      {/* Header */}
       <div
         style={{
           padding: "10px 14px",
@@ -26,18 +25,15 @@ export default function DiffViewer({ oldCode, newCode }) {
           textAlign: "center",
         }}
       >
-        Diff View
+        Edit Migrated Code
       </div>
-
-      <ReactDiffViewer
-        oldValue={oldCode}
-        newValue={newCode}
-        splitView
-        useDarkTheme
-        styles={darkDiffStyles}
-        compareMethod={DiffMethod.WORDS}
-        showDiffOnly={false}
-        disableWordDiff={false}
+      <Editor
+        height="300px"
+        language={language}
+        value={value}
+        onChange={onChange}
+        theme="vs-dark"
+        options={editerOptios}
       />
     </div>
   );

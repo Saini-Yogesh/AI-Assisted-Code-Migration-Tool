@@ -40,6 +40,10 @@ h1 {
   margin-top: 12px;
 }
 
+h3 {
+  text-align: center;
+}
+
 /* ===== Session History ===== */
 .history-empty {
   color: #94a3b8;
@@ -202,30 +206,3 @@ h1 {
   }
 }
 /* ===== End Action-bar===== */
-
-/* ===== Force DiffViewer text to black ===== */
-.diff-wrap {
-  background: #ffffff;
-}
-
-.diff-wrap pre,
-.diff-wrap code,
-.diff-wrap span,
-.diff-wrap td {
-  color: #000000 !important;
-}
-
-/* Line numbers / gutter */
-.diff-wrap .diff-gutter {
-  color: #374151 !important;
-  background: #f9fafb;
-}
-
-/* Added / Removed lines */
-.diff-wrap .diff-added {
-  background-color: #ecfdf5 !important;
-}
-
-.diff-wrap .diff-removed {
-  background-color: #fef2f2 !important;
-}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CodeEditor from "./CodeEditor";
 import DiffViewer from "./DiffViewer";
+import EditableMigratedEditor from "../components/EditableMigratedEditor";
 import MigrationOptions from "./MigrationOptions";
 import SessionHistory from "./SessionHistory";
 import ErrorBanner from "./ErrorBanner";
@@ -110,6 +111,12 @@ export default function Home() {
         {!loading && (
           <div className="diff-wrap">
             <DiffViewer oldCode={code} newCode={migratedCode} />
+
+            <EditableMigratedEditor
+              value={migratedCode}
+              onChange={setMigratedCode}
+              language={target === "TypeScript" ? "typescript" : "javascript"}
+            />
           </div>
         )}
       </div>

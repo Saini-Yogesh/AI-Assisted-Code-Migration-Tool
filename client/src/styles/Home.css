@@ -9,7 +9,7 @@
 
 /* scoped – no collision */
 .home > .sidebar {
-  width: 300px;
+  min-width: 300px;
   border-right: 1px solid #1f2937;
   background: #020617;
 }
@@ -72,6 +72,7 @@ h1 {
 
 .history-delete {
   background: none;
+  width: fit-content;
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -82,7 +83,14 @@ h1 {
   margin-top: 10px;
 }
 
-/* sidebar scroll only */
+.history-item.active {
+  background: #1e293b;
+  border-left: 3px solid #38bdf8;
+}
+
+/* ===== End Session History =====*/
+
+/* ===== Side scrollbar =====*/
 .history-list {
   height: 100vh;
   overflow-y: auto;
@@ -112,6 +120,7 @@ h1 {
 .history-list::-webkit-scrollbar-thumb:hover {
   background-color: #818cf8;
 }
+/* ===== End Side scrollbar =====*/
 
 /* ===== Error Banner ===== */
 .error-banner {
@@ -147,24 +156,23 @@ h1 {
   }
 
   .sidebar {
+    order: 2;
     width: 100%;
-    height: 180px;
     border-right: none;
     border-bottom: 1px solid #1f2937;
   }
 
+  .history-list {
+    height: 250px;
+  }
+
   .main {
     padding: 12px;
+    order: 1;
   }
-}
 
-@media (max-width: 500px) {
   button {
     width: 100%;
-  }
-
-  h2 {
-    font-size: 1.1rem;
   }
 }
 
@@ -295,3 +303,35 @@ h1 {
   text-align: center;
 }
 /* ===== End Migrated Editor Container ===== */
+
+/* ===== scrol bar design ===== */
+/* main content scroll */
+.main {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Firefox */
+.main {
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 #020617;
+}
+
+/* Chrome / Edge / Safari */
+.main::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background-color: #6366f1;
+  border-radius: 6px;
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+  background-color: #818cf8;
+}
+/* ===== End scrol bar design ===== */

@@ -1,4 +1,9 @@
-export default function SessionHistory({ sessions, onSelect, onDelete }) {
+export default function SessionHistory({
+  sessions,
+  onSelect,
+  onDelete,
+  selectedId,
+}) {
   if (!sessions || sessions.length === 0) {
     return <p className="history-empty">No history yet</p>;
   }
@@ -10,7 +15,7 @@ export default function SessionHistory({ sessions, onSelect, onDelete }) {
       {sessions.map((s) => (
         <div
           key={s._id}
-          className="history-item"
+          className={`history-item ${selectedId === s._id ? "active" : ""}`}
           onClick={() => onSelect(s)}
           style={{ cursor: "pointer" }}
         >

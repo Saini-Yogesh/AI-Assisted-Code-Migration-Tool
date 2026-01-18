@@ -16,6 +16,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [sessions, setSessions] = useState([]);
   const [error, setError] = useState("");
+  const [selectedSessionId, setSelectedSessionId] = useState(null);
 
   useEffect(() => {
     loadSessions();
@@ -54,6 +55,7 @@ export default function Home() {
     setCode(s.originalCode);
     setMigratedCode(s.migratedCode);
     setTarget(s.target);
+    setSelectedSessionId(s._id);
   };
 
   const handleDeleteSession = async (id) => {
@@ -78,6 +80,7 @@ export default function Home() {
           sessions={sessions}
           onSelect={handleSelectSession}
           onDelete={handleDeleteSession}
+          selectedId={selectedSessionId}
         />
       </div>
 

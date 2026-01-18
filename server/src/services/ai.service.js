@@ -1,52 +1,53 @@
 import axios from "axios";
 import { buildMigrationPrompt } from "./prompt.builder.js";
 
+const MODELS = [
+  {
+    key: "GEMINI_API_KEY_3_FLASH_PREVIEW",
+    url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent"
+  },
+  {
+    key: "GEMINI_API_KEY_2_5_FLASH",
+    url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+  }
+];
+
 export const migrateCodeWithAI = async (code, target) => {
-  if (typeof code !== "string" || !code.trim()) {
+  if (typeof code !== "string" || !code.trim())
     throw new Error("Invalid or empty source code provided");
-  }
 
-  if (typeof target !== "string" || !target.trim()) {
+  if (typeof target !== "string" || !target.trim())
     throw new Error("Invalid or empty target provided");
-  }
-
-  if (!process.env.GEMINI_API_KEY) {
-    throw new Error("Missing GEMINI_API_KEY");
-  }
 
   const prompt = buildMigrationPrompt({ code, target });
-  const url =
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent";
 
-  try {
-    const { data, status } = await axios.post(
-      `${url}?key=${process.env.GEMINI_API_KEY}`,
-      {
-        contents: [{ role: "user", parts: [{ text: prompt }] }]
-      },
-      {
-        headers: { "Content-Type": "application/json" },
-        timeout: 30000
-      }
-    );
+  let lastError = "AI failed";
 
-    if (status !== 200) {
-      throw new Error(`Gemini API Error: ${status}`);
-    }
+  for (const model of MODELS) {
+    const apiKey = process.env[model.key];
+    if (!apiKey) continue;
 
-    const text =
-      data?.candidates?.[0]?.content?.parts
-        ?.map((p) => p?.text)
+    try {
+      const { data, status } = await axios.post(
+        `${model.url}?key=${apiKey}`,
+        { contents: [{ role: "user", parts: [{ text: prompt }] }] },
+        { headers: { "Content-Type": "application/json" }, timeout: 30000 }
+      );
+
+      if (status !== 200) throw new Error(`Status ${status}`);
+
+      const text = data?.candidates?.[0]?.content?.parts
+        ?.map(p => p?.text)
         .filter(Boolean)
         .join("\n")
         .trim();
 
-    return text || "No response from AI";
-  } catch (err) {
-    const message =
-      err.response?.data?.error?.message || err.message || "Unknown error";
-
-    console.error("Gemini API Error:", message);
-    throw new Error(message);
+      if (text) return text;
+      lastError = "Empty response";
+    } catch (err) {
+      lastError = err.response?.data?.error?.message || err.message;
+    }
   }
+
+  throw new Error(lastError);
 };

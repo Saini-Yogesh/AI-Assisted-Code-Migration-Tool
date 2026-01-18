@@ -177,8 +177,13 @@ Create `.env` file:
 ```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
-GEMINI_API_KEY=your_gemini_api_key
+GEMINI_API_KEY_2_5_FLASH=your_gemini_api_key
+GEMINI_API_KEY_3_FLASH_PREVIEW=your_gemini_api_key_different
 ```
+
+> **Note:**
+> I have used **two Gemini API keys** so that if the token limit of one key is exceeded, the application automatically uses the other.
+> You can also use **only one API key**—the application will still work fine in that case.
 
 Run backend:
 

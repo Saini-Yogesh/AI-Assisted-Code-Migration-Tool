@@ -1,4 +1,4 @@
-import ReactDiffViewer, { DiffMethod } from "react-diff-viewer";
+import ReactDiffViewer, { DiffMethod } from "react-diff-viewer-continued";
 import { darkDiffStyles } from "../services/themeStyles";
 
 export default function DiffViewer({ oldCode, newCode }) {

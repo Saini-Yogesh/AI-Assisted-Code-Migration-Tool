@@ -5,7 +5,7 @@ export default function SessionHistory({ sessions, onSelect, onDelete }) {
 
   return (
     <div className="history-list">
-      <h2>History</h2>
+      <h2>Session History</h2>
 
       {sessions.map((s) => (
         <div

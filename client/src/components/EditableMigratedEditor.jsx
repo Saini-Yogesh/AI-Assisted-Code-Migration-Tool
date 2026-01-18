@@ -9,7 +9,7 @@ export default function EditableMigratedEditor({ value, onChange, language }) {
       <div className="migrated-editor-header">Edit Migrated Code</div>
 
       <Editor
-        height="300px"
+        height="400px"
         language={language}
         value={value}
         onChange={onChange}

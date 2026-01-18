@@ -224,6 +224,15 @@ h1 {
   opacity: 0.9;
 }
 
+.migration-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.migration-select:disabled {
+  cursor: not-allowed;
+}
+
 /* Mobile */
 @media (max-width: 500px) {
   .migration-options {

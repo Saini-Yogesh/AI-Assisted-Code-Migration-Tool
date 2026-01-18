@@ -159,7 +159,7 @@ AI-CODE-MIGRATION-TOOL/
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/ai-code-migration-tool.git
+git clone https://github.com/Saini-Yogesh/AI-Assisted-Code-Migration-Tool.git
 cd ai-code-migration-tool
 ```
 
@@ -181,7 +181,7 @@ GEMINI_API_KEY_2_5_FLASH=your_gemini_api_key
 GEMINI_API_KEY_3_FLASH_PREVIEW=your_gemini_api_key_different
 ```
 
-> **Note:**
+> **📝Note:**
 > I have used **two Gemini API keys** so that if the token limit of one key is exceeded, the application automatically uses the other.
 > You can also use **only one API key**—the application will still work fine in that case.
 
@@ -265,10 +265,13 @@ var sum = function (a, b) {
 **Migrated TypeScript**
 
 ```ts
-export const sum = (a: number, b: number): number => {
+export const sum = function (a: string | number, b: string | number): string | number {
   return a + b;
 };
 ```
+
+<em>Live migration with side-by-side diff</em>
+<img width="1919" height="898" alt="image" src="https://github.com/user-attachments/assets/aa354a66-3292-4402-a8b2-9cb37e35b4ed" />
 
 ---
 
@@ -284,8 +287,8 @@ export const sum = (a: number, b: number): number => {
 
 ## 🧑‍💻 Author
 
-**Yogesh Saini**
+**[Yogesh Saini](https://saini-yogesh.github.io/Portfolio/)**
 
-- Competitive Programmer (Codeforces- **Specialist**, LeetCode- **Knight**)
+- Competitive Programmer (Codeforces- **[Specialist](https://codeforces.com/profile/yogesh_1___)**, LeetCode- **[Knight](https://leetcode.com/u/yogesh_1___/)**)
 - Full-Stack & Backend-focused Developer
 - Interested in scalable systems and AI-powered developer tools
